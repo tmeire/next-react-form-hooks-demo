@@ -9,8 +9,8 @@ export default async function Home() {
 
     return (
         <div
-            className="flex flex-col min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <h1>Todo List</h1>
+            className="flex flex-col min-h-screen p-8 gap-4 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+            <h1 className="text-2xl font-bold">Todo List</h1>
             <div className="text-left">
                 {todos.map((todo) => {
                     return (
