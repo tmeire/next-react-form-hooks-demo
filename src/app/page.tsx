@@ -2,9 +2,10 @@
 
 import NewTodoForm from "@/components/todo/new";
 import {list} from "@/db/todo";
+import CompleteTodoForm from "@/components/todo/complete";
 
 export default async function Home() {
-    const todos = await list();
+    const todos = await list(false);
 
     return (
         <div
@@ -13,11 +14,15 @@ export default async function Home() {
             <div className="text-left">
                 {todos.map((todo) => {
                     return (
-                        <div key={todo.id}>
-                            <span>{todo.id}: {todo.todo}</span>
+                        <div key={todo.id} className="flex flex-row space-x-2">
+                            <CompleteTodoForm todo={todo} />
+                            <div>{todo.todo}</div>
                         </div>
                     )
                 })}
+                {todos.length == 0 &&
+                    <span>All done!</span>
+                }
             </div>
             <NewTodoForm/>
         </div>

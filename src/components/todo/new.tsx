@@ -6,7 +6,7 @@ import {useForm} from "react-hook-form";
 import {useRouter} from "next/navigation";
 import {zodResolver} from "@hookform/resolvers/zod";
 import {useActionState, useEffect} from "react";
-import {schema} from "@/components/todo/schema";
+import {newTodoSchema} from "@/components/todo/schema";
 import {addTodo} from "@/components/todo/new-action";
 import {Input} from "@/components/ui/input";
 import {Button} from "@/components/ui/button";
@@ -14,8 +14,8 @@ import {Button} from "@/components/ui/button";
 export default function NewTodoForm() {
     const router = useRouter();
 
-    const form = useForm<z.output<typeof schema>>({
-        resolver: zodResolver(schema),
+    const form = useForm<z.output<typeof newTodoSchema>>({
+        resolver: zodResolver(newTodoSchema),
         mode: "onChange",
         defaultValues: {
             todo: "",
